@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#ffffff"
+    android:orientation="vertical"
+    android:clipChildren="false"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+
+        android:background="#80EEE0E5"
+        android:gravity="center"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:layout_weight="1">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:textColor="#d0000000"
+            android:text="发 现" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_discovery"
+        android:background="#80EEE0E5"
+        android:gravity="center_horizontal"
+        android:clipChildren="false"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="20">
+
+
+        <android.support.v4.view.ViewPager
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:overScrollMode="never"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+
+            android:clipChildren="false"
+            android:id="@+id/vp_discovery"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+        </android.support.v4.view.ViewPager>
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

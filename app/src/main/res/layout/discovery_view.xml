@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layout_gravity="center_horizontal"
+    android:background="@drawable/shape_corners"
+    android:orientation="vertical"
+    tools:context=".FragmentDiscovery">
+    <ImageView
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center_horizontal"
+        android:src="@mipmap/default_book"
+        android:layout_width="125dp"
+        android:layout_height="200dp" />
+    <TextView
+        android:id="@+id/tv_discovery_author"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center_horizontal"
+        android:text="石钟山"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:layout_margin="10dp"
+        android:layout_gravity="center_horizontal"
+        android:text="      小说讲述的是上个世纪60年代三个兄弟成长的故事。
+一对孪生兄弟刘栋和田村呱呱坠地，出生在一个艰难的年代艰难的家庭
+,为了两个小生命的生存和成长,亲生母亲忍着母子分离的痛苦和养母分别
+抱养,从此天各一方，两位母亲、两个家庭,从此开始两种完全不同的生活。"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+    </LinearLayout>
+
+</LinearLayout>

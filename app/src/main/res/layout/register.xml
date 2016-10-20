@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#ffffff"
+    android:orientation="vertical"
+
+    tools:context="com.maxi_160514.weixiao.ActivityRegister">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:layout_weight="1"
+        android:background="#1E90FF"
+        android:gravity="center_vertical">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:background="#1E90FF"
+            android:gravity="center"></LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:background="#1E90FF"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/tv_me_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="注册"
+                android:textColor="#ffffff"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:background="#1E90FF"
+            android:gravity="right">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginRight="10dp"
+
+                android:textColor="#ffffff"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="20"
+        android:background="#EBEBEB"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:layout_margin="30dp"
+            android:layout_marginTop="10dp"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <EditText
+                android:padding="8dp"
+                android:background="@drawable/maxi_layerlist"
+                android:id="@+id/et_register_account"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:hint="请输入手机号" />
+
+            <EditText
+                android:padding="8dp"
+                android:background="@drawable/maxi_layerlist_no_top"
+                android:id="@+id/et_register_passwd"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:hint="密码" />
+            <Button
+
+                android:background="@drawable/shape_login"
+                android:layout_marginTop="20dp"
+                android:layout_gravity="right"
+                android:id="@+id/bt_register"
+                android:text="注  册"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>
