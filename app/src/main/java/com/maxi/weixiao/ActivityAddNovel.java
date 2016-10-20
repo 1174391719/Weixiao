@@ -13,6 +13,7 @@ public class ActivityAddNovel extends Activity {
     private Button submit=null;
     private EditText title=null;
     private  EditText brief=null;
+    
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
