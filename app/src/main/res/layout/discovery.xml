@@ -10,7 +10,7 @@
 
     <LinearLayout
 
-        android:background="#80EEE0E5"
+        android:background="@color/mainScreen_title_background"
         android:gravity="center"
         android:layout_width="fill_parent"
         android:layout_height="50dp"
@@ -18,14 +18,14 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="18sp"
+            android:textSize="@dimen/mainScreen_title"
             android:textColor="#d0000000"
             android:text="发 现" />
     </LinearLayout>
 
     <LinearLayout
+        android:background="@color/mainScreen_content_background"
         android:id="@+id/ll_discovery"
-        android:background="#80EEE0E5"
         android:gravity="center_horizontal"
         android:clipChildren="false"
         android:layout_width="fill_parent"

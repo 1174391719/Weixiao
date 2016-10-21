@@ -6,29 +6,32 @@
     android:background="#ffffff"
     android:orientation="vertical"
     tools:context=".MainActivity">
+
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="50dp"
         android:layout_weight="1"
-        android:background="#80EEE0E5"
+        android:background="@color/mainScreen_title_background"
         android:gravity="center_vertical">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:gravity="center"></LinearLayout>
+
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="50dp"
             android:layout_weight="1"
             android:gravity="center">
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="50dp"
-            android:layout_weight="1"
-            android:gravity="center">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="书架"
                 android:textColor="#d0000000"
-                android:textSize="18sp" />
+                android:textSize="@dimen/mainScreen_title" />
         </LinearLayout>
 
         <LinearLayout
@@ -39,10 +42,10 @@
             android:gravity="right">
 
             <TextView
-                android:layout_marginRight="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:layout_marginRight="10dp"
                 android:text="图书馆"
                 android:textColor="#1E90FF"
                 android:textSize="14sp" />
@@ -51,27 +54,26 @@
     </LinearLayout>
 
     <LinearLayout
-        android:gravity="center"
-        android:background="#80EEE0E5"
-        android:layout_weight="20"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent">
+        android:layout_height="fill_parent"
+        android:layout_weight="20"
+        android:background="@color/mainScreen_content_background"
+        android:gravity="center">
+
         <TextView
-            android:textSize="18sp"
             android:id="@+id/tv_bookshell_none"
-            android:visibility="gone"
-            android:text="亲，你的书架上木有书呢"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:text="亲，你的书架上木有书呢"
+            android:textSize="16sp"
+            android:visibility="gone" />
 
         <android.support.v7.widget.RecyclerView
-            android:visibility="gone"
             android:id="@+id/rv_bookshelf"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            />
+            android:visibility="gone" />
     </LinearLayout>
-
 
 
 </LinearLayout>

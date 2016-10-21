@@ -3,4 +3,10 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+
+    <color name="mainScreen_title_background">#f9f9f9</color>
+    <color name="mainScreen_content_background">#f9f9f9</color>
+    <color name="mainScreen_button">#ffffff</color>
+    <color name="mainScreen_button_text_default">#90000000</color>
+    <color name="mainScreen_button_text_select">#d01E90FF</color>
 </resources>

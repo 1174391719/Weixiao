@@ -31,6 +31,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_main);
 
 
@@ -74,11 +75,6 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         });
 
 
-
-
-
-
-
         Intent intent = new Intent("com.android.launcher.action.INSTALL_SHORTCUT");
         intent.putExtra(Intent.EXTRA_SHORTCUT_NAME, "236");
         // 是否可以有多个快捷方式的副本，参数如果是true就可以生成多个快捷方式，如果是false就不会重复添加
@@ -97,12 +93,12 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
 
         WindowManager wm = this.getWindowManager();
 
-        Point p=new Point();
+        Point p = new Point();
 
-     wm.getDefaultDisplay().getSize(p);
-        Constants.scrrenSize=p;
+        wm.getDefaultDisplay().getSize(p);
+        Constants.scrrenSize = p;
 
-        Log.d("kk" + TAG, "onCreate-------width:"+p.x);
+        Log.d("kk" + TAG, "onCreate-------width:" + p.x);
 
     }
 
@@ -130,19 +126,19 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     private void changeMenuColor(int position) {
         switch (position) {
             case 0:
-                discovery.setTextColor(Color.parseColor("#1E90FF"));
-                bookshelf.setTextColor(Color.parseColor("#575757"));
-                me.setTextColor(Color.parseColor("#575757"));
+                discovery.setTextColor(this.getResources().getColor(R.color.mainScreen_button_text_select));
+                bookshelf.setTextColor(this.getResources().getColor(R.color.mainScreen_button_text_default));
+                me.setTextColor(this.getResources().getColor(R.color.mainScreen_button_text_default));
                 break;
             case 1:
-                discovery.setTextColor(Color.parseColor("#575757"));
-                bookshelf.setTextColor(Color.parseColor("#1E90FF"));
-                me.setTextColor(Color.parseColor("#575757"));
+                discovery.setTextColor(this.getResources().getColor(R.color.mainScreen_button_text_default));
+                bookshelf.setTextColor(this.getResources().getColor(R.color.mainScreen_button_text_select));
+                me.setTextColor(this.getResources().getColor(R.color.mainScreen_button_text_default));
                 break;
             case 2:
-                discovery.setTextColor(Color.parseColor("#575757"));
-                bookshelf.setTextColor(Color.parseColor("#575757"));
-                me.setTextColor(Color.parseColor("#1E90FF"));
+                discovery.setTextColor(this.getResources().getColor(R.color.mainScreen_button_text_default));
+                bookshelf.setTextColor(this.getResources().getColor(R.color.mainScreen_button_text_default));
+                me.setTextColor(this.getResources().getColor(R.color.mainScreen_button_text_select));
                 break;
             default:
                 break;

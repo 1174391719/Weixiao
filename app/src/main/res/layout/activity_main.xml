@@ -3,14 +3,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
+    android:clipToPadding="true"
+    android:fitsSystemWindows="true"
     android:background="#ffffff"
     android:orientation="vertical"
     tools:context=".MainActivity">
 
     <LinearLayout
+
+        android:clipToPadding="true"
+        android:fitsSystemWindows="true"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_weight="20">
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/mainScreen_content_background">
 
         <android.support.v4.view.ViewPager
             android:id="@+id/vp_main"
@@ -21,10 +27,9 @@
     </LinearLayout>
 
     <LinearLayout
-        android:background="@drawable/shape"
         android:layout_width="fill_parent"
         android:layout_height="50dp"
-        android:layout_weight="1"
+        android:background="@drawable/shape"
         android:orientation="horizontal">
 
         <LinearLayout
@@ -36,12 +41,12 @@
             android:orientation="vertical">
 
             <TextView
-                android:textColor="#1E90FF"
                 android:id="@+id/tv_main_discovery"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="发现"
-                android:textSize="15sp" />
+                android:textColor="@color/mainScreen_button_text_select"
+                android:textSize="13sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -53,12 +58,12 @@
             android:orientation="vertical">
 
             <TextView
-                android:textColor="#575757"
                 android:id="@+id/tv_main_bookshelf"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="书架"
-                android:textSize="15sp" />
+                android:textColor="@color/mainScreen_button_text_default"
+                android:textSize="13sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -70,12 +75,12 @@
             android:orientation="vertical">
 
             <TextView
-                android:textColor="#575757"
                 android:id="@+id/tv_main_me"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="我"
-                android:textSize="15sp" />
+                android:textColor="@color/mainScreen_button_text_default"
+                android:textSize="13sp" />
         </LinearLayout>
 
 
