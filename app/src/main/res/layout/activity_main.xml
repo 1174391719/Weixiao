@@ -3,20 +3,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
+    android:background="#ffffff"
     android:clipToPadding="true"
     android:fitsSystemWindows="true"
-    android:background="#ffffff"
     android:orientation="vertical"
     tools:context=".MainActivity">
 
     <LinearLayout
 
-        android:clipToPadding="true"
-        android:fitsSystemWindows="true"
         android:layout_width="fill_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:background="@color/mainScreen_content_background">
+        android:background="@color/mainScreen_content_background"
+        android:clipToPadding="true"
+        android:fitsSystemWindows="true">
 
         <android.support.v4.view.ViewPager
             android:id="@+id/vp_main"
@@ -40,13 +40,20 @@
             android:gravity="center"
             android:orientation="vertical">
 
+            <ImageView
+                android:layout_width="@dimen/mainScreen_bottom_image_size"
+                android:layout_height="23dp"
+                android:layout_marginTop="@dimen/mainScreen_bottom_text_margin"
+                android:src="@drawable/discovery" />
+
             <TextView
                 android:id="@+id/tv_main_discovery"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/mainScreen_bottom_text_margin"
                 android:text="发现"
                 android:textColor="@color/mainScreen_button_text_select"
-                android:textSize="13sp" />
+                android:textSize="@dimen/mainScreen_bottom_text" />
         </LinearLayout>
 
         <LinearLayout
@@ -57,13 +64,20 @@
             android:gravity="center"
             android:orientation="vertical">
 
+            <ImageView
+                android:layout_width="@dimen/mainScreen_bottom_image_size"
+                android:layout_height="@dimen/mainScreen_bottom_image_size"
+                android:layout_marginTop="@dimen/mainScreen_bottom_text_margin"
+                android:src="@drawable/bookshelf" />
+
             <TextView
                 android:id="@+id/tv_main_bookshelf"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/mainScreen_bottom_text_margin"
                 android:text="书架"
                 android:textColor="@color/mainScreen_button_text_default"
-                android:textSize="13sp" />
+                android:textSize="@dimen/mainScreen_bottom_text" />
         </LinearLayout>
 
         <LinearLayout
@@ -74,17 +88,19 @@
             android:gravity="center"
             android:orientation="vertical">
 
+            <ImageView
+                android:layout_width="@dimen/mainScreen_bottom_image_size"
+                android:layout_height="@dimen/mainScreen_bottom_image_size"
+                android:layout_marginTop="@dimen/mainScreen_bottom_text_margin"
+                android:src="@drawable/me" />
+
             <TextView
                 android:id="@+id/tv_main_me"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="我"
                 android:textColor="@color/mainScreen_button_text_default"
-                android:textSize="13sp" />
+                android:textSize="@dimen/mainScreen_bottom_text" />
         </LinearLayout>
-
-
     </LinearLayout>
-
-
 </LinearLayout>
