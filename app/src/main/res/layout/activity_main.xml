@@ -39,13 +39,6 @@
             android:layout_weight="1"
             android:gravity="center"
             android:orientation="vertical">
-
-            <ImageView
-                android:layout_width="@dimen/mainScreen_bottom_image_size"
-                android:layout_height="23dp"
-                android:layout_marginTop="@dimen/mainScreen_bottom_text_margin"
-                android:src="@drawable/discovery" />
-
             <TextView
                 android:id="@+id/tv_main_discovery"
                 android:layout_width="wrap_content"
@@ -63,12 +56,6 @@
             android:layout_weight="1"
             android:gravity="center"
             android:orientation="vertical">
-
-            <ImageView
-                android:layout_width="@dimen/mainScreen_bottom_image_size"
-                android:layout_height="@dimen/mainScreen_bottom_image_size"
-                android:layout_marginTop="@dimen/mainScreen_bottom_text_margin"
-                android:src="@drawable/bookshelf" />
 
             <TextView
                 android:id="@+id/tv_main_bookshelf"
@@ -88,11 +75,6 @@
             android:gravity="center"
             android:orientation="vertical">
 
-            <ImageView
-                android:layout_width="@dimen/mainScreen_bottom_image_size"
-                android:layout_height="@dimen/mainScreen_bottom_image_size"
-                android:layout_marginTop="@dimen/mainScreen_bottom_text_margin"
-                android:src="@drawable/me" />
 
             <TextView
                 android:id="@+id/tv_main_me"

@@ -1,7 +1,11 @@
 package com.maxi.weixiao;
 
+import android.app.Activity;
+import android.app.Fragment;
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,9 +20,11 @@ import java.util.List;
 public class AdapterBookshelf extends RecyclerView.Adapter<AdapterBookshelf.MyViewHolder> {
     Context fb = null;
     List<Novel> novels = new ArrayList<>();
+    private AddBook mCallBack = null;
 
 
-    public AdapterBookshelf(Context fb, List<Novel> novels) {
+    public AdapterBookshelf(AddBook cb, Context fb, List<Novel> novels) {
+        mCallBack = cb;
         this.fb = fb;
         this.novels = novels;
 
@@ -39,18 +45,29 @@ public class AdapterBookshelf extends RecyclerView.Adapter<AdapterBookshelf.MyVi
 
     @Override
     public int getItemCount() {
-        if(novels==null)
+        if (novels == null)
             return 0;
         return novels.size();
     }
 
-    class MyViewHolder extends RecyclerView.ViewHolder {
+    class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         TextView tv;
 
         public MyViewHolder(View view) {
             super(view);
             tv = (TextView) view.findViewById(R.id.tv_recycleitem_bookshelf_title);
+            view.setOnClickListener(this);
         }
+
+        @Override
+        public void onClick(View v) {
+            mCallBack.addBook(getAdapterPosition(), novels.get(getAdapterPosition()));
+        }
+    }
+
+
+    public interface AddBook {
+        void addBook(int position, Novel novel);
     }
 }

@@ -14,9 +14,11 @@
 
     <!-- 间隔 -->
     <padding
-        android:bottom="10dp"
-        android:left="20dp"
-        android:right="20dp"
-        android:top="10dp" /> <!-- 设置各个方向的间隔 -->
+
+        android:left="15dp"
+        android:top="0dp"
+        android:right="15dp"
+        android:bottom="0dp"
+         /> <!-- 设置各个方向的间隔 -->
 
 </shape>  

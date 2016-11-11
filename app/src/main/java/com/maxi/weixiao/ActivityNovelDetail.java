@@ -28,6 +28,7 @@ public class ActivityNovelDetail extends Activity {
     private TextView mAuthor = null;
     private TextView mBrief = null;
     private TextView mAdd = null;
+    private TextView mRead = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +40,7 @@ public class ActivityNovelDetail extends Activity {
         mAuthor = (TextView) findViewById(R.id.tv_novel_detail_author);
         mBrief = (TextView) findViewById(R.id.tv_novel_detail_brief);
         mAdd = (TextView) findViewById(R.id.tv_novel_detail_add);
+        mRead = (TextView) findViewById(R.id.tv_novel_detail_read);
         mTitle.setText(mNovel.getTitle());
         mAuthor.setText(mNovel.getAuthor());
         mBrief.setText(mNovel.getBrief());
@@ -54,16 +56,21 @@ public class ActivityNovelDetail extends Activity {
 
         }
 
-
         mAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d("kk" + TAG, "setOnClickListener-------------");
-
                 FragmentBookshelf.instants.addBook(mNovel);
 
             }
         });
+        mRead.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(ActivityNovelDetail.this, ActivityReading.class));
+            }
+        });
 
     }
+
+
 }

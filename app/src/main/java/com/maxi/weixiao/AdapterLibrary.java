@@ -17,20 +17,16 @@ import java.util.List;
 /**
  * Created by mingzhi.yuan on 3/12/16.
  */
-public class AdapterLibrary extends RecyclerView.Adapter<AdapterLibrary.MyViewHolder> implements View.OnClickListener {
+public class AdapterLibrary extends RecyclerView.Adapter<AdapterLibrary.MyViewHolder> {
     static final String TAG = "AdapterLibrary";
     Context fb = null;
     List<Novel> novelList = null;
+    private LibraryInterface mCallBack = null;
 
-    private OnRecyclerViewItemClickListener mOnItemClickListener = null;
-
-    public static interface OnRecyclerViewItemClickListener {
-        void onItemClick(View view);
-    }
-
-
-    public AdapterLibrary(Context fb, List<Novel> nl) {
+    public AdapterLibrary(LibraryInterface li, Context fb, List<Novel> nl) {
         Log.d("kk" + TAG, "AdapterLibrary----------");
+        this.mCallBack = li;
+
         this.fb = fb;
         this.novelList = nl;
 
@@ -43,7 +39,6 @@ public class AdapterLibrary extends RecyclerView.Adapter<AdapterLibrary.MyViewHo
                 fb).inflate(R.layout.recycleview_item_library, parent,
                 false);
         MyViewHolder holder = new MyViewHolder(view);
-        view.setOnClickListener(this);
         return holder;
     }
 
@@ -53,7 +48,6 @@ public class AdapterLibrary extends RecyclerView.Adapter<AdapterLibrary.MyViewHo
         holder.itemView.setTag(novelList.get(position));
 
 
-
     }
 
     @Override
@@ -61,7 +55,7 @@ public class AdapterLibrary extends RecyclerView.Adapter<AdapterLibrary.MyViewHo
         return novelList != null ? novelList.size() : 0;
     }
 
-    class MyViewHolder extends RecyclerView.ViewHolder {
+    class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         TextView tv;
         ImageView iv;
@@ -69,18 +63,19 @@ public class AdapterLibrary extends RecyclerView.Adapter<AdapterLibrary.MyViewHo
         public MyViewHolder(View view) {
             super(view);
             tv = (TextView) view.findViewById(R.id.tv_recycleitem_library);
-            iv=(ImageView)view.findViewById(R.id.iv_recycleitem_library);
+            iv = (ImageView) view.findViewById(R.id.iv_recycleitem_library);
+            view.setOnClickListener(this);
+        }
+
+        public void onClick(View view) {
+            mCallBack.selectItem(getAdapterPosition(), novelList.get(getAdapterPosition()));
+
         }
     }
-    @Override
-    public void onClick(View v) {
-        if (mOnItemClickListener != null) {
-            //注意这里使用getTag方法获取数据
-            mOnItemClickListener.onItemClick(v);
-        }
-    }
-    public void setOnItemClickListener(OnRecyclerViewItemClickListener listener) {
-        this.mOnItemClickListener = listener;
+
+
+    interface LibraryInterface {
+        void selectItem(int position, Novel novel);
     }
 
 }

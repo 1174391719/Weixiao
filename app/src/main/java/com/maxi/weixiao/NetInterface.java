@@ -20,9 +20,5 @@ public class NetInterface {
         public void callBack(List<Novel> list);
     }
 
-    public interface InterfaceGetLibrary{
-        public void getLibraly(List<Novel> list);
-    }
-
 
 }

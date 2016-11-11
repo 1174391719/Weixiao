@@ -16,6 +16,9 @@ import android.view.WindowManager;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MainActivity extends FragmentActivity implements View.OnClickListener {
     static final String TAG = "MainActivity";
     private ViewPager viewPager = null;
@@ -99,7 +102,6 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         Constants.scrrenSize = p;
 
         Log.d("kk" + TAG, "onCreate-------width:" + p.x);
-
     }
 
 

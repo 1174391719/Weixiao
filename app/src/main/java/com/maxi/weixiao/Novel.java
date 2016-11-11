@@ -1,19 +1,22 @@
 package com.maxi.weixiao;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * Created by mingzhi.yuan on 3/21/16.
  */
-public class Novel implements Serializable{
+public class Novel implements Serializable {
 
-    private String id=null;
-    private String account=null;
-    private String title=null;
-    private String author=null;
-    private String brief=null;
-    private String picName=null;
-    private String editTime=null;
+    private String id = null;
+    private String account = null;
+    private String title = null;
+    private String author = null;
+    private String brief = null;
+    private String picName = null;
+    private String editTime = null;
+    private List mParts = null;
+
 
     public String getId() {
         return id;
@@ -70,6 +73,5 @@ public class Novel implements Serializable{
     public void setEditTime(String editTime) {
         this.editTime = editTime;
     }
-
 
 }

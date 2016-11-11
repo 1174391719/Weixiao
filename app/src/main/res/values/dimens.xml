@@ -3,8 +3,9 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="mainScreen_title">16sp</dimen>
-    <dimen name="mainScreen_bottom_text">10sp</dimen>
+    <dimen name="mainScreen_bottom_text">14sp</dimen>
     <dimen name="mainScreen_bottom_image_size">23dp</dimen>
     <dimen name="mainScreen_bottom_text_margin">3dp</dimen>
+    <dimen name="reading_text_size">18dp</dimen>
 
 </resources>

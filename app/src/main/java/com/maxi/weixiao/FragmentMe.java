@@ -23,7 +23,7 @@ import java.util.logging.LogRecord;
  */
 public class FragmentMe extends Fragment {
 
-    private LinearLayout myNovel = null;
+ //   private LinearLayout myNovel = null;
     private ImageView iv = null;
     private TextView title = null;
     private Handler handler = null;
@@ -39,15 +39,15 @@ public class FragmentMe extends Fragment {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        myNovel = (LinearLayout) getActivity().findViewById(R.id.ll_me_mynovel);
+      //  myNovel = (LinearLayout) getActivity().findViewById(R.id.ll_me_mynovel);
         iv = (ImageView) getActivity().findViewById(R.id.iv_me);
         title = (TextView) getActivity().findViewById(R.id.tv_me_title);
-        myNovel.setOnClickListener(new View.OnClickListener() {
+       /* myNovel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getActivity(), ActivityMyNovel.class));
             }
-        });
+        });*/
         iv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -16,14 +16,13 @@ import java.util.List;
 /**
  * Created by mingzhi.yuan on 1/23/16.
  */
-public class FragmentDiscovery extends Fragment {
+public class FragmentDiscovery extends Fragment implements NovelHelper.GetNovels {
     private ViewPager viewPager = null;
     private ViewpagedAdapterDiscovery adapter = null;
 
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
-        //Log.d("kk", "FragmentDiscovery/onActivityCreated-------:");
         super.onActivityCreated(savedInstanceState);
 
         List<View> viewList = initView();
@@ -61,6 +60,8 @@ public class FragmentDiscovery extends Fragment {
             }
         });
 
+        NovelHelper.getInstance().getNovels(this, 4);
+
 
     }
 
@@ -73,8 +74,6 @@ public class FragmentDiscovery extends Fragment {
 
     public void onResume() {
         super.onResume();
-
-
     }
 
     private List<View> initView() {
@@ -85,10 +84,11 @@ public class FragmentDiscovery extends Fragment {
             TextView textView = (TextView) layout.findViewById(R.id.tv_discovery_author);
             textView.setText("fdg" + i);
             listView.add(layout);
-
         }
         return listView;
     }
 
+    public void getNovels(List<Novel> novels) {
 
+    }
 }
