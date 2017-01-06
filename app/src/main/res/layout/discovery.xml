@@ -4,47 +4,48 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:background="#ffffff"
-    android:orientation="vertical"
     android:clipChildren="false"
+    android:orientation="vertical"
     tools:context=".MainActivity">
 
     <LinearLayout
 
-        android:background="@color/mainScreen_title_background"
-        android:gravity="center"
         android:layout_width="fill_parent"
         android:layout_height="50dp"
-        android:layout_weight="1">
+        android:layout_weight="1"
+        android:background="@color/mainScreen_title_background"
+        android:gravity="center">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="@dimen/mainScreen_title"
+            android:text="发 现"
             android:textColor="#d0000000"
-            android:text="发 现" />
+            android:textSize="@dimen/mainScreen_title" />
     </LinearLayout>
 
     <LinearLayout
-        android:background="@color/mainScreen_content_background"
         android:id="@+id/ll_discovery"
-        android:gravity="center_horizontal"
-        android:clipChildren="false"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_weight="20">
+        android:layout_weight="20"
+        android:background="@color/mainScreen_content_background"
+        android:clipChildren="false"
+        android:gravity="center_horizontal">
 
 
         <android.support.v4.view.ViewPager
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            android:overScrollMode="never"
-            android:layout_centerInParent="true"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
-
-            android:clipChildren="false"
             android:id="@+id/vp_discovery"
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent">
+            android:layout_height="fill_parent"
+            android:layout_centerInParent="true"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="30dp"
+
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="10dp"
+            android:clipChildren="false"
+            android:overScrollMode="never">
 
         </android.support.v4.view.ViewPager>
 

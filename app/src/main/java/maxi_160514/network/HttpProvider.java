@@ -116,32 +116,37 @@ public class HttpProvider {
             OutputStream os = httpURLConnection.getOutputStream();
             os.write(params.toString().getBytes());
             os.flush();
-            Log.d("kk", "params===:" + params);
+           // Log.d("kk", "params===:" + params);
 
             // 根据ResponseCode判断连接是否成功
             int responseCode = httpURLConnection.getResponseCode();
             if (responseCode != 200) {
                 Log.d("kk", " Error===" + responseCode);
             } else {
-                Log.d("kk", "Post Success!");
+           //     Log.d("kk", "Post Success!");
             }
             // 定义BufferedReader输入流来读取URL的ResponseData
             bufferedReader = new BufferedReader(new InputStreamReader(
                     httpURLConnection.getInputStream()));
             String line;
+            int need = 0;
             while ((line = bufferedReader.readLine()) != null) {
-                line=line.replace("　　","\n　　");
+                if (need > 1) {
+                    line = line.replace("　　", "\n　　");
+                } else {
+                    need++;
+                }
                 responseResult.append(line);
             }
             bufferedReader.close();
 
-            Log.d("kk", "toString11----------:" + responseResult.toString());
-            Log.d("kk", "toString22-----------:" + responseResult.toString().substring(responseResult.toString().length() - 100));
+        //    Log.d("kk", "toString11----------:" + responseResult.toString());
+       //     Log.d("kk", "toString22-----------:" + responseResult.toString().substring(responseResult.toString().length() - 100));
 
             return new JSONObject(responseResult.toString());
 
         } catch (Exception e) {
-            Log.d("kk", "send post request error!" + e);
+        //    Log.d("kk", "send post request error!" + e);
         } finally {
             httpURLConnection.disconnect();
             try {

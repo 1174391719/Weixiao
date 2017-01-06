@@ -20,8 +20,6 @@ public class ViewpagedAdapter extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        Log.d("kk","ViewpagedAdapter/Fragment------position:"+position);
-
         switch (position) {
             case 0:
                 return new FragmentDiscovery();

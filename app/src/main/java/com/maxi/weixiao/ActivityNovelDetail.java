@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,6 +30,7 @@ public class ActivityNovelDetail extends Activity {
     private TextView mBrief = null;
     private TextView mAdd = null;
     private TextView mRead = null;
+    private ImageView back = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,13 +43,14 @@ public class ActivityNovelDetail extends Activity {
         mBrief = (TextView) findViewById(R.id.tv_novel_detail_brief);
         mAdd = (TextView) findViewById(R.id.tv_novel_detail_add);
         mRead = (TextView) findViewById(R.id.tv_novel_detail_read);
+        back = (ImageView) findViewById(R.id.iv_novel_detail_back);
         mTitle.setText(mNovel.getTitle());
         mAuthor.setText(mNovel.getAuthor());
         mBrief.setText(mNovel.getBrief());
 
         if (FragmentBookshelf.instants.getNovelList() != null && mNovel != null) {
             for (int i = FragmentBookshelf.instants.getNovelList().size() - 1; i >= 0; i--) {
-                if (mNovel.getId().equals(FragmentBookshelf.instants.getNovelList().get(i).getId())) {
+                if (mNovel.getId() == (FragmentBookshelf.instants.getNovelList().get(i).getId())) {
                     mAdd.setText("已加入书架");
                     mAdd.setTextColor(Color.parseColor("#501E90FF"));
                 }
@@ -55,6 +58,12 @@ public class ActivityNovelDetail extends Activity {
 
 
         }
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ActivityNovelDetail.this.finish();
+            }
+        });
 
         mAdd.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,7 +75,11 @@ public class ActivityNovelDetail extends Activity {
         mRead.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(ActivityNovelDetail.this, ActivityReading.class));
+                Bundle bundle = new Bundle();
+                bundle.putInt("ACTIVITY_READING_NOVELID", mNovel.getId());
+                Intent intent = new Intent(ActivityNovelDetail.this, ActivityReading.class);
+                intent.putExtra("ACTIVITY_READING_BUNDLE", bundle);
+                startActivity(intent);
             }
         });
 

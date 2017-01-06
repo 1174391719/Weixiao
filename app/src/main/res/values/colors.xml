@@ -9,4 +9,5 @@
     <color name="mainScreen_button">#ffffff</color>
     <color name="mainScreen_button_text_default">#90000000</color>
     <color name="mainScreen_button_text_select">#d01E90FF</color>
+    <color name="reading_content_background">#50FFFFE0</color>
 </resources>

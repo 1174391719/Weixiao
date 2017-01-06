@@ -4,7 +4,9 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.ColorFilter;
 import android.graphics.Point;
+import android.graphics.drawable.VectorDrawable;
 import android.os.Bundle;
 
 
@@ -13,43 +15,43 @@ import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.maxi.weixiao.R.color.mainScreen_button_text_default;
+import static com.maxi.weixiao.R.color.mainScreen_button_text_select;
+
 public class MainActivity extends FragmentActivity implements View.OnClickListener {
     static final String TAG = "MainActivity";
     private ViewPager viewPager = null;
 
     private ViewpagedAdapter adapter = null;
-    private TextView discovery = null;
-    private TextView bookshelf = null;
-    private TextView me = null;
+    private TextView tvDiscovery = null;
+    private TextView tvBookshelf = null;
+    private TextView tvMe = null;
     private LinearLayout discoveryLi = null;
     private LinearLayout bookshelfLi = null;
     private LinearLayout meLi = null;
 
+    private VectorDrawable vdDiscovery;
+    private VectorDrawable vdBookshelf;
+    private VectorDrawable vdMe;
+    private ImageView ivDiscovery;
+    private ImageView ivBookshelf;
+    private ImageView ivMe;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_main);
 
-
-        Log.d("kkMainActivity", "onCreate11---kk:" + ActivityLogin.kk);
+        initView();
         ActivityLogin.kk++;
-        Log.d("kkMainActivity", "onCreate22---kk:" + ActivityLogin.kk);
 
-
-        viewPager = (ViewPager) findViewById(R.id.vp_main);
-        discovery = (TextView) findViewById(R.id.tv_main_discovery);
-        bookshelf = (TextView) findViewById(R.id.tv_main_bookshelf);
-        me = (TextView) findViewById(R.id.tv_main_me);
-        discoveryLi = (LinearLayout) findViewById(R.id.ll_main_discovery);
-        bookshelfLi = (LinearLayout) findViewById(R.id.ll_main_bookshelf);
-        meLi = (LinearLayout) findViewById(R.id.ll_main_me);
         discoveryLi.setOnClickListener(this);
         bookshelfLi.setOnClickListener(this);
         meLi.setOnClickListener(this);
@@ -100,8 +102,28 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
 
         wm.getDefaultDisplay().getSize(p);
         Constants.scrrenSize = p;
+    }
 
-        Log.d("kk" + TAG, "onCreate-------width:" + p.x);
+    private void initView() {
+        viewPager = (ViewPager) findViewById(R.id.vp_main);
+
+        tvDiscovery = (TextView) findViewById(R.id.tv_main_discovery);
+        ivDiscovery = (ImageView) findViewById(R.id.iv_main_discovery);
+        discoveryLi = (LinearLayout) findViewById(R.id.ll_main_discovery);
+        vdDiscovery = (VectorDrawable) getResources().getDrawable(R.drawable.discovery);
+        setDiscoveryMode(false);
+
+        tvBookshelf = (TextView) findViewById(R.id.tv_main_bookshelf);
+        ivBookshelf = (ImageView) findViewById(R.id.iv_main_bookshelf);
+        bookshelfLi = (LinearLayout) findViewById(R.id.ll_main_bookshelf);
+        vdBookshelf = (VectorDrawable) getResources().getDrawable(R.drawable.bookshef);
+        setBookshelfMode(true);
+
+        tvMe = (TextView) findViewById(R.id.tv_main_me);
+        ivMe = (ImageView) findViewById(R.id.iv_main_me);
+        meLi = (LinearLayout) findViewById(R.id.ll_main_me);
+        vdMe = (VectorDrawable) getResources().getDrawable(R.drawable.me);
+        setMeMode(true);
     }
 
 
@@ -128,22 +150,60 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     private void changeMenuColor(int position) {
         switch (position) {
             case 0:
-                discovery.setTextColor(this.getResources().getColor(R.color.mainScreen_button_text_select));
-                bookshelf.setTextColor(this.getResources().getColor(R.color.mainScreen_button_text_default));
-                me.setTextColor(this.getResources().getColor(R.color.mainScreen_button_text_default));
+                setDiscoveryMode(false);
+                setBookshelfMode(true);
+                setMeMode(true);
                 break;
             case 1:
-                discovery.setTextColor(this.getResources().getColor(R.color.mainScreen_button_text_default));
-                bookshelf.setTextColor(this.getResources().getColor(R.color.mainScreen_button_text_select));
-                me.setTextColor(this.getResources().getColor(R.color.mainScreen_button_text_default));
+                setDiscoveryMode(true);
+                setBookshelfMode(false);
+                setMeMode(true);
                 break;
             case 2:
-                discovery.setTextColor(this.getResources().getColor(R.color.mainScreen_button_text_default));
-                bookshelf.setTextColor(this.getResources().getColor(R.color.mainScreen_button_text_default));
-                me.setTextColor(this.getResources().getColor(R.color.mainScreen_button_text_select));
+                setDiscoveryMode(true);
+                setBookshelfMode(true);
+                setMeMode(false);
                 break;
             default:
                 break;
         }
+    }
+
+    private void setDiscoveryMode(boolean isDefault) {
+        if (isDefault) {
+            tvDiscovery.setTextColor(this.getResources().getColor(mainScreen_button_text_default));
+            vdDiscovery.setTint(getResources().getColor(R.color.mainScreen_button_text_default));
+        } else {
+            tvDiscovery.setTextColor(this.getResources().getColor(mainScreen_button_text_select));
+            vdDiscovery.setTint(getResources().getColor(R.color.mainScreen_button_text_select));
+        }
+        ivDiscovery.setImageDrawable(vdDiscovery);
+    }
+
+    private void setBookshelfMode(boolean isDefault) {
+        if (isDefault) {
+            tvBookshelf.setTextColor(this.getResources().getColor(mainScreen_button_text_default));
+            vdBookshelf.setTint(getResources().getColor(R.color.mainScreen_button_text_default));
+        } else {
+            tvBookshelf.setTextColor(this.getResources().getColor(mainScreen_button_text_select));
+            vdBookshelf.setTint(getResources().getColor(mainScreen_button_text_select));
+        }
+        ivBookshelf.setImageDrawable(vdBookshelf);
+    }
+
+    private void setMeMode(boolean isDefault) {
+        if (isDefault) {
+            tvMe.setTextColor(this.getResources().getColor(mainScreen_button_text_default));
+            vdMe.setTint(getResources().getColor(R.color.mainScreen_button_text_default));
+        } else {
+            tvMe.setTextColor(this.getResources().getColor(mainScreen_button_text_select));
+            vdMe.setTint(getResources().getColor(R.color.mainScreen_button_text_select));
+        }
+        ivMe.setImageDrawable(vdMe);
+    }
+
+    @Override
+    public void onBackPressed() {
+
     }
 }

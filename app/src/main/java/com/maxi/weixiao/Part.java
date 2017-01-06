@@ -9,7 +9,7 @@ import java.util.List;
 public class Part {
     private String title = null;
     private int partPosition = -1;
-    private List section = null;
+    private List<Section> sections = null;
     private int novelId = -1;
 
     public String getTitle() {
@@ -28,12 +28,12 @@ public class Part {
         this.partPosition = partPosition;
     }
 
-    public List getSection() {
-        return section;
+    public List<Section> getSections() {
+        return sections;
     }
 
-    public void setSection(List mSection) {
-        this.section = mSection;
+    public void setSections(List<Section> mSection) {
+        this.sections = mSection;
     }
 
     public int getNovelId() {

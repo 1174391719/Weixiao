@@ -30,7 +30,6 @@
         <activity android:name=".ActivityLibrary" />
         <activity android:name=".ActivityLogin" />
         <activity android:name=".ActivityRegister" />
-        <activity android:name=".turntest" />
         <activity android:name=".ActivityNovelDetail" />
         <activity android:name=".ActivityReading"></activity>
     </application>

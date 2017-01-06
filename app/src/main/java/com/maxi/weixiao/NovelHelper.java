@@ -57,10 +57,9 @@ public class NovelHelper {
                 if (jsonArray != null) {
                     novels = new ArrayList<>();
                     for (int i = jsonArray.length() - 1; i >= 0; i--) {
-                        Log.d("kk", "getLibrary:4");
                         JSONObject jb = jsonArray.getJSONObject(i);
                         Novel novel = new Novel();
-                        novel.setId(jb.getString("id"));
+                        novel.setId(jb.getInt("id"));
                         novel.setTitle(jb.getString("title"));
                         novel.setAccount(jb.getString("account"));
                         novel.setAuthor(jb.getString("author"));
@@ -78,26 +77,22 @@ public class NovelHelper {
         return null;
     }
 
-    public void getParts(final GetParts callBack) {
+    public void getParts(final GetParts callBack, String novelId) {
+        Log.d("kk" + TAG, "getParts-----novelId:" + novelId);
 
         final Map map = new HashMap();
         map.put("key", "3");
-        map.put("novelId", 3);
+        map.put("novelId", novelId);
 
         new Thread() {
             public void run() {
 
                 JSONObject js = mHttpProvider.httpPost(Constants.webURL, map);
                 if (js != null) {
-                    Log.d("kk", "getParts-----------:" + js.toString());
                     try {
                         String jo = js.getString("result");
-
-
                         JSONArray jsonArray = new JSONArray(jo);
                         if (jsonArray != null) {
-                            Log.d("kk", "getParts----22-------jsonArray:" + jsonArray);
-
                             List<Part> parts = new ArrayList<>();
 
                             for (int i = 0; i < jsonArray.length(); i++) {
@@ -105,17 +100,17 @@ public class NovelHelper {
 
                                 if (jb != null) {
                                     Part part = new Part();
-                                    String id = jb.getString("novel_id");
                                     part.setNovelId(Integer.parseInt(jb.getString("novel_id")));
+                                    part.setPartPosition(Integer.parseInt(jb.getString("part_position")));
                                     part.setTitle(jb.getString("title"));
-                                    part.setPartPosition(Integer.parseInt(jb.getString("part_posation")));
                                     parts.add(part);
-                                    Log.d("kk" + TAG, "getParts----------getNovelId:" + part.getNovelId() +
-                                            " getPartPosition:" + part.getPartPosition());
+                                    Log.d("kk" + TAG, "getParts--result--getNovelId:" + part.getNovelId() +
+                                            " getPartPosition:" + part.getPartPosition() + " getTitle:" + part.getTitle());
                                 }
                             }
-                            callBack.getParts(parts);
+                            callBack.getPartsSuccess(parts);
                         }
+
 
 
                     } catch (Exception e) {
@@ -126,23 +121,40 @@ public class NovelHelper {
         }.start();
     }
 
+    public void getParts1(final GetParts callBack, int novelId) {
+        Log.d("kk" + TAG, "getParts1-----novelId:" + novelId);
+
+        List<Part> parts = new ArrayList<>();
+
+        Part part = new Part();
+        part.setNovelId(novelId);
+        part.setPartPosition(0);
+        parts.add(part);
+        Log.d("kk" + TAG, "getParts1--result--getNovelId:" + part.getNovelId() +
+                " getPartPosition:" + part.getPartPosition() + " getTitle:" + part.getTitle());
+
+        callBack.getPartsSuccess(parts);
+
+
+    }
+
     public void getSections(final GetSections callBack, int novelId, int partPosition) {
         final Map map = new HashMap();
         map.put("key", "4");
         map.put("novelId", novelId);
         map.put("partPosition", partPosition);
-
+        Log.d("kk" + TAG, "getSections-----novelId:" + novelId + " partPosition:" + partPosition);
         new Thread() {
             public void run() {
 
                 JSONObject js = mHttpProvider.httpPost(Constants.webURL, map);
                 if (js != null) {
-                    Log.d("kk", "getSections-----------:" + js.toString());
+                    //           Log.d("kk", "getSections-----------:" + js.toString());
                     try {
                         String jo = js.getString("result");
                         JSONArray jsonArray = new JSONArray(jo);
                         if (jsonArray != null) {
-                            Log.d("kk", "getSections----22-------jsonArray:" + jsonArray);
+                            //       Log.d("kk", "getSections----22-------jsonArray:" + jsonArray);
 
                             List<Section> sections = new ArrayList<>();
 
@@ -152,15 +164,60 @@ public class NovelHelper {
                                 if (jb != null) {
                                     Section section = new Section();
                                     section.setNovelId(Integer.parseInt(jb.getString("novel_id")));
-                                    section.setPosition(Integer.parseInt(jb.getString("part_posation")));
-                                    section.setContent(jb.getString("content"));
+                                    section.setPartPosition(Integer.parseInt(jb.getString("part_position")));
+                                    section.setSectionPosition((Integer.parseInt(jb.getString("section_position"))));
+                                    section.setTitle(jb.getString("title"));
                                     sections.add(section);
+                                    //                 Log.d("kk" + TAG, "getSections--result---novelId:" + section.getTitle());
                                 }
                             }
-                            callBack.getSections(sections);
+                            callBack.getSectionsSuccess(sections);
                         }
                     } catch (Exception e) {
-                        Log.d("kk" + TAG, "Exception in getParts .  e:" + e.toString());
+                        Log.d("kk" + TAG, "Exception in getSections .  e:" + e.toString());
+                    }
+                }
+            }
+        }.start();
+    }
+
+    public void getSection(final GetSection callBack, int novelId, int partPosition, int sectionPosition) {
+        final Map map = new HashMap();
+        map.put("key", "5");
+        map.put("novelId", novelId);
+        map.put("partPosition", partPosition);
+        map.put("sectionPosition", sectionPosition);
+        Log.d("kk", "To get section. novelId:" + novelId + " partPosition:" + partPosition + " sectionPosition:" + sectionPosition);
+        new Thread() {
+            public void run() {
+
+                JSONObject js = mHttpProvider.httpPost(Constants.webURL, map);
+                if (js != null) {
+                    try {
+                        String jo = js.getString("result");
+                        JSONArray jsonArray = new JSONArray(jo);
+                        if (jsonArray != null) {
+
+
+                            List<Section> sections = new ArrayList<>();
+
+                            for (int i = 0; i < jsonArray.length(); i++) {
+                                JSONObject jb = jsonArray.getJSONObject(i);
+
+                                if (jb != null) {
+                                    Section section = new Section();
+                                    section.setNovelId(Integer.parseInt(jb.getString("novel_id")));
+                                    section.setPartPosition(Integer.parseInt(jb.getString("part_position")));
+                                    section.setSectionPosition((Integer.parseInt(jb.getString("section_position"))));
+                                    section.setContent(jb.getString("content"));
+                                    //       Log.d("kk", "getSections--------content:" + jb.getString("content"));
+                                    callBack.getSectionSuccess(section);
+                                }
+                            }
+
+                        }
+                    } catch (Exception e) {
+                        Log.d("kk" + TAG, "Exception in getSection .  e:" + e.toString());
                     }
                 }
             }
@@ -169,7 +226,7 @@ public class NovelHelper {
 
     public void getNovels(final GetNovels callBack, int count) {
         final Map map = new HashMap();
-        map.put("key", "5");
+        map.put("key", "6");
         map.put("count", count);
         new Thread() {
             public void run() {
@@ -190,11 +247,15 @@ public class NovelHelper {
     }
 
     public interface GetParts {
-        void getParts(List<Part> parts);
+        void getPartsSuccess(List<Part> parts);
     }
 
     public interface GetSections {
-        void getSections(List<Section> sections);
+        void getSectionsSuccess(List<Section> sections);
+    }
+
+    public interface GetSection {
+        void getSectionSuccess(Section sections);
     }
 
     public interface GetNovels {

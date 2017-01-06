@@ -1,55 +1,51 @@
 package com.maxi.weixiao;
 
 import android.app.Activity;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.support.v4.view.ViewPager;
+import android.text.Layout;
 import android.util.Log;
-import android.widget.TextView;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.WindowManager;
+import android.widget.LinearLayout;
 
-import java.util.HashMap;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
-public class ActivityReading extends Activity implements NovelHelper.GetParts, NovelHelper.GetSections {
+import maxi_160514.custom.RecyclePageView;
 
-    public final static int UPDATE_CONTENT = 0;
-    private TextView content = null;
+public class ActivityReading extends Activity {
 
-    private Handler mHandler = new Handler() {
-        public void handleMessage(Message msg) {
-            switch (msg.arg1) {
-                case UPDATE_CONTENT:
-                    List<Section> sections = (List<Section>) msg.obj;
-                    content.setText(sections.get(0).getContent());
-                    break;
-            }
-            super.handleMessage(msg);
-        }
-    };
+    static String TAG = "ActivityReading";
+
+    private Bundle mBundle = null;
+
+    private ReadController mReadController = null;
+    WindowManager wm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_reading);
 
-        content = (TextView) findViewById(R.id.tv_reading_content);
+        wm = this.getWindowManager();
+        LinearLayout layout = (LinearLayout) findViewById(R.id.temp);
+        ReadView temp = (ReadView) layout.findViewById(R.id.tv);
+        mBundle = getIntent().getBundleExtra("ACTIVITY_READING_BUNDLE");
 
-        NovelHelper.getInstance().getParts(this);
-    }
+        if (mBundle != null) {
+            mReadController = new ReadController(this, temp, mBundle.getInt("ACTIVITY_READING_NOVELID", 0),
+                    wm.getDefaultDisplay().getWidth(), wm.getDefaultDisplay().getHeight());
+        }
 
+        //Set recyclePageView
 
-    public void getParts(List<Part> parts) {
-        NovelHelper.getInstance().getSections(this, parts.get(0).getNovelId(), parts.get(0).getPartPosition());
-    }
-
-    public void getSections(List<Section> sections) {
-        Log.d("kk", "getSections:" + sections.get(0).getContent());
-        Message msg = new Message();
-        msg.arg1 = UPDATE_CONTENT;
-        msg.obj = sections;
-        mHandler.sendMessage(msg);
 
     }
-
 }

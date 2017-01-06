@@ -5,16 +5,27 @@ package com.maxi.weixiao;
  */
 
 public class Section {
-    private int position = -1;
-    private int novelId = -1;
-    private String content = null;
 
-    public int getPosition() {
-        return position;
+    private int novelId = -1;
+    private int partPosition = -1;
+    private int sectionPosition = -1;
+    private String content = null;
+    private String title = null;
+
+    public int getPartPosition() {
+        return partPosition;
     }
 
-    public void setPosition(int position) {
-        this.position = position;
+    public void setPartPosition(int position) {
+        this.partPosition = position;
+    }
+
+    public int getSectionPosition() {
+        return sectionPosition;
+    }
+
+    public void setSectionPosition(int position) {
+        this.sectionPosition = position;
     }
 
     public int getNovelId() {
@@ -34,4 +45,11 @@ public class Section {
     }
 
 
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
 }

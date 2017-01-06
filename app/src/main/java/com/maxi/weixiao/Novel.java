@@ -8,21 +8,23 @@ import java.util.List;
  */
 public class Novel implements Serializable {
 
-    private String id = null;
+    private int id = 0;
     private String account = null;
     private String title = null;
     private String author = null;
     private String brief = null;
     private String picName = null;
     private String editTime = null;
-    private List mParts = null;
 
 
-    public String getId() {
+    private List<Part> mParts = null;
+
+
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -73,5 +75,14 @@ public class Novel implements Serializable {
     public void setEditTime(String editTime) {
         this.editTime = editTime;
     }
+
+    public List<Part> getParts() {
+        return mParts;
+    }
+
+    public void setParts(List<Part> mParts) {
+        this.mParts = mParts;
+    }
+
 
 }

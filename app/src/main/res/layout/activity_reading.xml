@@ -1,25 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_reading"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/reading_content_background"
     tools:context="com.maxi.weixiao.ActivityReading">
 
-    <ScrollView
+    <include
+        android:id="@+id/temp"
+        layout="@layout/page_view"
+        android:visibility="invisible" />
+
+    <maxi_160514.custom.RecyclePageView
+        android:id="@+id/pv_reading"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="12dp"
-        android:scrollbars="none">
+        android:layout_centerInParent="true"
+        android:overScrollMode="never">
 
-        <TextView
-            android:id="@+id/tv_reading_content"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text=""
-            android:lineSpacingMultiplier="1.7 "
-            android:textSize="@dimen/reading_text_size" />
-    </ScrollView>
-
-
-</LinearLayout>
+    </maxi_160514.custom.RecyclePageView>
+</RelativeLayout>
